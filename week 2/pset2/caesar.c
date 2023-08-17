@@ -12,9 +12,7 @@ int main(int argc, string argv[])
     if (argc == 2 && valid_key(argv[1]))
     {
         int key = atoi(argv[1]);
-        printf("%i\n\n", key);
         string text = get_string("plaintext: ");
-
         string encrypted_text = encrypt(key, text);
 
         printf("ciphertext: %s\n", encrypted_text);
