@@ -1,0 +1,20 @@
+sort1 uses: Bubble Sort
+
+random: 5.000 -> 0,089s / 50.000 -> 8,113s || O(n²)
+sorted: 5.000 -> 0,049s / 50.000 -> 0,747s || Ω(n)
+
+How do you know?: O(n²) | Ω(n)
+
+sort2 uses: Merge Sort
+
+random: 5.000 -> 0,023s / 50.000 -> 0,601s || O(n log n)
+sorted: 5.000 -> 0,020s / 50.000 -> 0,628s || Ω(n log n)
+
+How do you know?: O(n log n) | Ω(n log n)
+
+sort3 uses: Selection sort
+
+random: 5.000 -> 0,049s / 50.000 -> 3,926s || O(n²)
+sorted: 5.000 -> 0,067s / 50.000 -> 3,899s || Ω(n²)
+
+How do you know?: O(n²) | Ω(n²)
