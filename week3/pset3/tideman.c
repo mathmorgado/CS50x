@@ -16,8 +16,7 @@ typedef struct
 {
     int winner;
     int loser;
-}
-pair;
+} pair;
 
 // Array of candidates
 string candidates[MAX];
@@ -120,7 +119,7 @@ void record_preferences(int ranks[])
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
-            int pref_cand = ranks[i]; 
+            int pref_cand = ranks[i];
             int less_cand = ranks[j];
 
             preferences[pref_cand][less_cand] += 1;
@@ -133,6 +132,33 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
     // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = i + 1; j < candidate_count; j++)
+        {
+            int candid_i = i;
+            int candid_j = j;
+
+            if (preferences[candid_i][candid_j] == preferences[candid_j][candid_i])
+            {
+                continue;
+            }
+            else if (preferences[candid_i][candid_j] > preferences[candid_j][candid_i])
+            {
+                pairs[pair_count].winner = candid_i;
+                pairs[pair_count].loser = candid_j;
+
+                pair_count++;
+            }
+            else
+            {
+                pairs[pair_count].winner = candid_j;
+                pairs[pair_count].loser = candid_i;
+
+                pair_count++;
+            }
+        }
+    }
     return;
 }
 
@@ -140,6 +166,32 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // TODO
+    for (int i = 0; i < pair_count; i++)
+    {
+        int winner_i = pairs[i].winner;
+        int loser_i = pairs[i].loser;
+        int strength_victory_i = preferences[winner_i][loser_i] - preferences[loser_i][winner_i];
+
+        for (int j = i + 1; j < pair_count; j++)
+        {
+            int winner_j = pairs[j].winner;
+            int loser_j = pairs[j].loser;
+            int strength_victory_j = preferences[winner_j][loser_j] - preferences[loser_j][winner_j];
+
+            if (strength_victory_i == strength_victory_j || strength_victory_i > strength_victory_j)
+            {
+                continue;
+            }
+            else
+            {
+                pairs[i].winner = winner_j;
+                pairs[i].loser = loser_j;
+
+                pairs[j].winner = winner_i;
+                pairs[j].loser = loser_i;
+            }
+        }
+    }
     return;
 }
 
@@ -147,6 +199,24 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     // TODO
+    for (int i = 0; i < pair_count; i++)
+    {
+        int winner = pairs[i].winner;
+        int loser = pairs[i].loser;
+
+        // verificação para nao criar ciclo
+        for (int j = 0; j < candidate_count; j++)
+        {
+            int cand_j = j;
+
+            if (locked[loser][cand_j] && locked[cand_j][winner])
+            {
+                locked[winner][loser] = false;
+                break;
+            }
+            locked[winner][loser] = true;
+        }
+    }
     return;
 }
 
