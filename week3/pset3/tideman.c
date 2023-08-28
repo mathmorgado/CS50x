@@ -206,7 +206,6 @@ void lock_pairs(void)
 
         // verificação para nao criar ciclo
         int temp_winner = winner;
-        int x = 0;
         bool no_cycle = true;
         while (no_cycle)
         {
