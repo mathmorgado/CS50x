@@ -12,10 +12,13 @@ int main(void)
 
 int collatz(int num)
 {
+    // base case
     if (num == 1)
     {
         return steps;
     }
+
+    // recursions case
     else if (num % 2 == 0)
     {
         steps++;
