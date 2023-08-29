@@ -28,7 +28,7 @@
          s[0] -> *s
          s[1] -> *(s+1)
          s[2] -> *(s+2)
-     In other words, syntactic sugar!
+     In other words, are syntactic sugar!
 */
 
 int main(void)
