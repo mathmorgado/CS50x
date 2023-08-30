@@ -1,5 +1,4 @@
 #include "helpers.h"
-#include <stdio.h>
 
 void colorize(int height, int width, RGBTRIPLE image[height][width])
 {
