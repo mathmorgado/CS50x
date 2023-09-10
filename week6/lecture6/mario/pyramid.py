@@ -10,6 +10,7 @@ def invert_pyramid(height):
         else:
             print("#" * i)
 
+
 def double_pyramid(height):
     for i in range(1, height + 1):
         if i != height:
