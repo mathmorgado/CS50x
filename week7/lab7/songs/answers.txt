@@ -1,0 +1,12 @@
+SELECT AVG(energy), AVG(valence), AVG(danceability) FROM songs;
++-------------+--------------+-------------------+
+| AVG(energy) | AVG(valence) | AVG(danceability) |
++-------------+--------------+-------------------+
+| 0.65906     | 0.484443     | 0.71646           |
++-------------+--------------+-------------------+
+
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+    With these averages, I would classify the listener's audio aura as Purple.
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+    I think that the listener's best 100 songs is a very broad number and, in order to be able to characterize the listener's audio aura more specifically, we should calculate the average energy, valence and danceability of the 10 best songs
