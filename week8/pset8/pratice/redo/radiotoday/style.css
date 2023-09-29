@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar a {
+    font-size: 16px;
+    font-weight:500;
+    margin-right: 20px;
+    height: 2rem;
+}
+
+section {
+    min-height: 100vh;
+    padding-top: 3rem;
+}
+
+iframe {
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#home {
+    background-color: black;
+}
+
+#story {
+    background-color: black;
+}
+
+#team {
+    background-color: black;
+}
