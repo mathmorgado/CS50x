@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="index-div">
+        <div class="boxesteste">
+            <div class="boxesvalues">
+                <p>Entrada <ion-icon class="entrada" name="arrow-up-circle-outline"></ion-icon></p>
+                <h2>{{ entradas | brl }}</h2>
+            </div>
+            <div class="boxesvalues">
+                <p>Saida <ion-icon class="saida" name="arrow-down-circle-outline"></ion-icon></p>
+                <h2>{{ saidas | brl }}</h2>
+            </div>
+            <div class="boxesvalues">
+                <p>Saldo <ion-icon class="entrada" name="cash"></ion-icon></p>
+                <h2>{{ total | brl }}</h2>
+            </div>
+          </div>
+
+            <div class="boxinput">
+              <form action="/" method="post" class="formbox">
+                <div class="mb-3 itemsform">
+                  <select autocomplete="off" autofocus class="form-control mx-auto w-auto" id="table" name="table" type="text">
+                      <option disabled selected>Escolha</option>
+                      {% for table in tables %}
+                        <option>{{ table[0] }}</option>
+                      {% endfor %}
+                  </select>
+                </div>
+
+                <div class="mb-3 itemsform">
+                  <input autocomplete="off" name="descricao" placeholder="Descrição" required type="text">
+                </div>
+
+                <div class="mb-3 itemsform">
+                  <input autocomplete="off" min="1" name="valor" placeholder="Valor" required type="number">
+                </div>
+
+                <div class="mb-3 itemsform">
+                  <button class="btn btn-primary" type="submit">ADICIONAR</buttom>
+                </div>
+              </form>
+            </div>
+
+
+        {% for table in base_tables %}
+          {% for name_table, item in table.items() %}
+            {% if item != [] %}
+
+              <h2 class="title-table">{{ name_table }}</h2>
+              <hr>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th class="text-start" scope="col">descrição</th>
+                    <th class="text-start" scope="col">Valor</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    {% for dict_item in item %}
+                    <tr>
+                      <td class="text-start"> {{ dict_item["description"] }}</td>
+                      <td class="text-start"> {{ dict_item["value"] | brl}}</td>
+                      {% if name_table == "entradas" %}
+                        <td><ion-icon class="entrada" name="arrow-up-circle-outline"></ion-icon></td>
+                      {% else %}
+                        <td><ion-icon class="saida" name="arrow-down-circle-outline"></ion-icon></td>
+                      {% endif %}
+                      <td>
+                        <form action="/delete" method="post">
+                          <input type="hidden" name="table" value="{{ name_table }}">
+                          <input type="hidden" name="item" value="{{ dict_item['description'] }}">
+                          <button class="btn btn-link" type="submit">
+                            <ion-icon class="saida" name="trash"></ion-icon>
+                          </buttom>
+                        </form>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% endblock %}

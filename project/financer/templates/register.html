@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <form action="/register" method="post">
+                <h2>Register</h2>
+                <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input autocomplete="off" id="username" name="username" placeholder="Username" required type="text">
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="bag-outline"></ion-icon>
+                    <input id="password" name="password" placeholder="Password" required type="password">
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                    <input id="password" name="confirmation" placeholder="Password again" required type="password">
+                </div>
+                <div class="register">
+                    <p>Already have a account? <a href="/login">Log in</a></p>
+                </div>
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% endblock %}
